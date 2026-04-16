@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+database:
+  driver: sqlite
+  sqlite_path: data/app.db
+  mysql_dsn: root:password@tcp(127.0.0.1:3306)/ntf_auction?charset=utf8mb4&parseTime=True&loc=Local
+
+jwt:
+  secret: change-this-secret
+  expire_hours: 24
+
+default_user:
+  username: admin
+  password: admin123
+
+ethereum:
+  # 本地开发节点示例，可改为 sepolia/alchemy/infura 等 RPC。
+  rpc_url: http://127.0.0.1:8545
+  # 仅发送交易接口需要，地址会由私钥自动推导。 
+  tx_signer_private_key: ""
+  # 订阅的合约事件列表，注释掉不需要的事件即可: 简单通过配置使用，测试验证
+  watch_events:
+    - NFTAuctionListed
+    - NFTAuctionBidPlaced
+    - NFTAuctionEnded
+    - NFTAuctionCancelled
+    - NFTAuctionDelisted
+    - NFTListed
+    - NFTDelisted
+    - NFTPurchased
+    - NFTListingPriceUpdated
